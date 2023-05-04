@@ -1,0 +1,55 @@
+<div mat-dialog-title>
+  <span>{{ post.name }}</span>
+
+  <span class="spacer"></span>
+
+  <span class="topBtn">
+    <button mat-mini-fab color="primary" (click)="addItem()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      color="primary"
+      [mat-dialog-close]="items"
+      cdkFocusInitial
+      class="okBtn"
+    >
+    <mat-icon>saveAlt</mat-icon>
+    </button>
+  </span>
+</div>
+
+<div class="section mat-dialog-content">
+  <span *ngIf="!anyItem">No todo yet</span>
+
+  <div class="itemList">
+    <span class="list-section">
+      <ul>
+        <li *ngFor="let item of items; let i = index">
+          <mat-checkbox [(ngModel)]="item.done" color="primary"> </mat-checkbox>
+          <span>{{ item.descr }}</span>
+          <button
+            mat-mini-fab
+            color="warn"
+            class="botBtn"
+            (click)="deleteItem(i)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button
+            mat-mini-fab
+            color="primary"
+            class="botBtn"
+            (click)="openEditor(item, i)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </span>
+  </div>
+</div>
+
+<!-- доработать этот компонент -->
+
+<!-- Добавить добавление/удаление пунктов -->

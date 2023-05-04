@@ -1,0 +1,56 @@
+<div class="login-page">
+  <h2>Register</h2>
+  <form action="" [formGroup]="registerForm">
+    <div class="justify-content-center">
+      <div>
+        <mat-form-field appearence="outline">
+          <mat-label>Email Address</mat-label>
+          <input matInput type="email" formControlName="email" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearence="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearence="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div class="row buttonsLine">
+        <button
+          mat-flat-button
+          color="primary"
+          class="btn"
+          [disabled]="registerForm.invalid"
+          (click)="submit()"
+        >
+          Register
+        </button>
+      </div>
+
+      <div class="textLine">
+        <span
+          >Already registered? Then go <a routerLink="/login">login</a></span
+        >
+      </div>
+    </div>
+  </form>
+</div>

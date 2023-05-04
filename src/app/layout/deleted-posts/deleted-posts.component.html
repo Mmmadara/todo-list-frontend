@@ -1,0 +1,18 @@
+<div class="post-table">
+  <mat-card
+    class="post-card"
+    *ngFor="let post of posts; let i = index"
+  >
+    <mat-card-header>{{ post.name }}</mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-fab color="primary" (click)="activatePost(post.id)">
+        <mat-icon>restorefromtrash</mat-icon>
+      </button>
+      <button mat-fab color="warn" (click)="deletePost(post.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!-- (click)="openPost(post.id)" -->

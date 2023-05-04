@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <!-- Menu -->
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openPosts(1)">
+      <mat-icon>note</mat-icon>
+      <span>ToDo</span>
+    </button>
+    <button mat-menu-item (click)="openPosts(2)">
+      <mat-icon>delete</mat-icon>
+      <span>Deleted</span>
+    </button>
+  </mat-menu>
+
+  <!-- Main page link -->
+  <span routerLink="/main" style="cursor: pointer; margin-left: 20px">
+    ToDo List</span
+  >
+
+  <span class="spacer"></span>
+
+  <!-- login/Logout and User name -->
+  <span class="userName" *ngIf="isDataLoaded">{{ user.name }}</span>
+  <button
+    mat-button
+    *ngIf="!isDataLoaded"
+    class="example-icon favorite-icon"
+    (click)="login()"
+  >
+    Login
+  </button>
+  <button
+    mat-button
+    *ngIf="authService.isLoggedIn$ && isDataLoaded"
+    class="example-icon favorite-icon"
+    (click)="logout()"
+  >
+    Logout
+  </button>
+</mat-toolbar>

@@ -1,0 +1,38 @@
+<div class="main">
+  <mat-form-field class="my-form-field">
+    <mat-label>Post name</mat-label>
+    <input matInput type="text" [(ngModel)]="value" />
+    <button
+      *ngIf="value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="value = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="value == ''">
+      Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-fab color="primary" (click)="createPost(value)">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<div class="post-table">
+  <mat-card class="post-card" *ngFor="let post of posts; let i = index">
+    <mat-card-header>{{ post.name }}</mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-fab color="primary" (click)="openPost(post)">
+        <mat-icon>modeEdit</mat-icon>
+      </button>
+      <button mat-fab color="warn" (click)="deactivatePost(post.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!-- (click)="openPost(post.id)" -->
